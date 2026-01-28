@@ -1,0 +1,24 @@
+# Run AI Optimization (Targeting max impact with Budget 50.0)
+budget = 50.0
+moves = love_os.suggest_interventions(L, V, R, S, costs, budget)
+
+print(f"\n--- 🧪 AI Prescription (Budget: {budget}) ---")
+print(f"{'Action':<30} | {'Target':<20} | {'ROI':<8} | {'Impact'}")
+print("-" * 75)
+
+for m in moves:
+    target = names[m['Target']]
+    if m['Type'] == "Boost Resonance (S)":
+        target += f" & {names[m['Target_2']]}"
+    print(f"{m['Type']:<30} | {target:<20} | {m['ROI']:.2f}     | +{m['Impact']:.2f}")
+
+# Apply the best move for simulation
+if moves:
+    best_move = moves[0]
+    print(f"\nApplying Best Move: {best_move['Type']} on {names[best_move['Target']]}")
+    
+    # Update logic for simulation (Example: R reduction)
+    if best_move['Type'] == "Reduce Resistance (R)":
+        R[best_move['Target']] -= 0.1
+        # Ensure R doesn't go below 0
+        R[best_move['Target']] = max(0.0, R[best_move['Target']])
