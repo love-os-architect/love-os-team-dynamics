@@ -1,0 +1,6 @@
+# Current State Diagnosis
+print("--- 🩺 Initial Diagnosis ---")
+love_os.visualize_gravity_network(L, V, R, S, names)
+metrics = love_os.analyze_team_state(L, V, R, S)
+print(f"Current Stability Margin: {metrics['Margin']:.2f}")
+print(f"Is Stable? {metrics['Is_Stable']}")
